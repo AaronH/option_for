@@ -18,7 +18,6 @@ class OptionFor < Hash
       if value.is_a?(Hash)
         OptionFor.new value
       else
-        puts ":::: #{value}"
         eval(value) rescue value
       end
     else
