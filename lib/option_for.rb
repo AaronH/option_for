@@ -44,7 +44,7 @@ class OptionFor < Hash
   
   def read_user_key(item)
     if item.is_a?(Hash)
-      item[ENV['USER'].downcase] || item[ENV['USER'].downcase] || item['default'] || item
+      item[ENV['USER']] || item[ENV['USER'].to_s.downcase] || item['default'] || item
     else
       item
     end

@@ -4,8 +4,10 @@ Option for is an easy way to have rails read a configuration YML file in your Ra
 Options are first checked for an environment name so you can easily keep track of multiple settings.
 Beyond that, the environment variable for $USER is checked
 
+Put the option_for directory into vendor/plugins.
 
-config/option_for.yml
+Create an option_for.yml in your config directory to hold your settings.
+
 ...
 
 hostname:
@@ -35,6 +37,15 @@ Then in your code call:
 OptionFor.hostname 
 OptionFor.apikeys.googlemaps
 OptionFor.per_page.posts
+
+
+If you need to use option_for settings before the Rails environment or plugins are loaded (ala in development.rb)
+you will need to add the following to your application.rb before the Application class definition.
+
+require 'yaml'
+SETTINGS = YAML.load(File.read(File.expand_path('../option_for.yml', __FILE__)))
+
+Then, in your development.rb you will need to include the items manually.
 
 
 
