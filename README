@@ -1,0 +1,41 @@
+OptionFor
+
+Option for is an easy way to have rails read a configuration YML file in your Rails 3 config directory. 
+Options are first checked for an environment name so you can easily keep track of multiple settings.
+Beyond that, the environment variable for $USER is checked
+
+
+config/option_for.yml
+...
+
+hostname:
+  production:   myapp.com
+  development:  
+    default:    localhost:3000
+    user1:      myapp.dev
+    user2:      myapp.local
+    
+apikeys:
+  googlemaps:
+    production: 12345
+    test:       24680
+    development:
+      default:  44444
+      user1:    55555
+      user2:    88888
+  
+per_page:
+  posts:    10
+  comments: 20
+
+...
+
+Then in your code call:
+
+OptionFor.hostname 
+OptionFor.apikeys.googlemaps
+OptionFor.per_page.posts
+
+
+
+
