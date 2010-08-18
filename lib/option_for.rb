@@ -18,7 +18,8 @@ class OptionFor < Hash
       if value.is_a?(Hash)
         OptionFor.new value
       else
-        eval(value) rescue value
+        # eval(value) rescue value
+        value
       end
     else
       begin
